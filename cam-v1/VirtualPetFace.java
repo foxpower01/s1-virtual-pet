@@ -181,10 +181,15 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         //System.err.println(pics.size());
     }
     
-    public void setMessage(String message) {
+    public void addMessage(String message) {
         String current = textArea.getText();
         textArea.setText(current + "\n" + message);
         textArea.select(current.length(), (current.length() + message.length() + 1));
+    }
+
+    public void setMessage(String message) {
+        textArea.setText(message);
+        // textArea.select(current.length(), ABORT);
     }
     
     

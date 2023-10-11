@@ -12,13 +12,12 @@ public class VirtualPet {
     VirtualPetFace face;
     private int hunger = 0;   // how hungry the pet is.
     private int tiredness = 0;
-    private int age = 0;
+    private String userName;
     
     // constructor
     public VirtualPet() {
         face = new VirtualPetFace();
         face.setImage("normal");
-        face.setMessage("Hello.");
     }
 
     //getter and setter for age
@@ -29,40 +28,16 @@ public class VirtualPet {
         }catch(Exception e){}
     }
     
-    public void feed() {
-        if (hunger > 10) {
-            hunger = hunger - 10;
-        } else {
-            hunger = 0;
-        }
-        if ((int)(Math.random() * 10) == 9){
-            face.setMessage("Your pet is sick!");
-            face.setImage("sick");
-        }
-        face.setMessage("Yum, thanks");
-        face.setImage("normal");
+    public void addMessageUser(String message){
+        face.addMessage(this.userName + ": " + message);
     }
 
-    public void handleSick(){
-        String s = (String)JOptionPane.showInputDialog(new JFrame(), "Do you want to take your pet to the vet?", "Get a response", JOptionPane.PLAIN_MESSAGE);
-        if (s.indexOf("yes") > -1 || s.indexOf("Yes") > -1){
-            goToVet();
-        }else{
-            face.setImage("sleep");
-            pause(3000);
-            if ((int)(Math.random() * 3) == 3){
-                face.setMessage("Your pet got better on its own!");
-                face.setImage("normal");
-            }else{
-                face.setMessage("Your pet doesn't feel so good...");
-                pause(2000);
-                dead();
-            }
-        }
+    public void addMessagePet(String message){
+        face.addMessage(message);
     }
 
-    private void goToVet(){
-
+    public void setName(String name) {
+        this.userName = name;
     }
 
     public void dead(){
@@ -74,7 +49,7 @@ public class VirtualPet {
     public void exercise() {
         hunger = hunger + 3;
         tiredness+=1;
-        face.setMessage("1, 2, 3, jump.  Whew.");
+        face.addMessage("1, 2, 3, jump.  Whew.");
         if (tiredness < 4){
             face.setImage("ecstatic");
         }
