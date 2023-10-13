@@ -4,6 +4,8 @@
  * @author ?
  */
 
+import java.util.Random;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -13,6 +15,7 @@ public class VirtualPet {
     private int hunger = 0;   // how hungry the pet is.
     private int tiredness = 0;
     private String userName;
+    public double solution;
     
     // constructor
     public VirtualPet() {
@@ -20,7 +23,14 @@ public class VirtualPet {
         face.setImage("normal");
     }
 
-    //getter and setter for age
+    public String genEquation() {
+        Random rand = new Random();
+        int m = rand.nextInt(1, 13);
+        int a = rand.nextInt(1, 13);
+        int b = rand.nextInt(1, 13);
+        this.solution = (double) (b - a) / m;     
+        return "Solve for x: " + m + "x + " + a + " = " + b;
+    }
 
     private void pause(long milliseconds){
         try{
@@ -45,6 +55,12 @@ public class VirtualPet {
         pause(2000);
         face.setImage("skeleon");
     }
+
+    public void happy(){
+        face.setImage("joyful");
+    }
+
+    
     
     public void exercise() {
         hunger = hunger + 3;
