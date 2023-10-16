@@ -44,12 +44,14 @@ public class Runner {
             options,
             options[0]);
         p.addMessageUser(options[result]);
-        pause(1000);
         if (result == 1) {
+            p.setMood("fire");
             p.addMessagePet("Too bad!");
-            pause(1000);
         }
+        pause(1000);
         p.addMessagePet("Let's begin!");
+        p.setMood("exercising");
+        pause(1000);
         int score = 0;
 
         for (int i=0; i < 15; i++) {
@@ -88,7 +90,7 @@ public class Runner {
                 }
             }
         }
-        
+        System.out.println(score);
         if (score >= 16){
             p.veryHappy();
         }else if (score >= 10){
@@ -96,6 +98,7 @@ public class Runner {
         }else if (score >= 5){
             p.setMood("annoyed");
         }else {
+            System.out.println("angry");
             p.setMood("angry");
         }
         p.addMessagePet("Your score was " + score + " out of 15!");
