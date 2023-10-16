@@ -60,7 +60,13 @@ public class VirtualPet {
         face.setImage("joyful");
     }
 
-    
+    public void veryHappy(){
+        face.setImage("ecstatic");
+    }
+
+    public void setMood(String mood){
+        face.setImage(mood);
+    }
     
     public void exercise() {
         hunger = hunger + 3;

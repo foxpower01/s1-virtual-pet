@@ -87,13 +87,18 @@ public class Runner {
                     break;
                 }
             }
-            if (score > 10){
-                p.happy();
-            }
-            p.addMessagePet("Your score was " + score + " out of 15!");
         }
         
-    }
+        if (score >= 16){
+            p.veryHappy();
+        }else if (score >= 10){
+            p.happy();
+        }else if (score >= 5){
+            p.setMood("annoyed");
+        }else {
+            p.setMood("angry");
+        }
+        p.addMessagePet("Your score was " + score + " out of 15!");
 
-    
+    }
 }
